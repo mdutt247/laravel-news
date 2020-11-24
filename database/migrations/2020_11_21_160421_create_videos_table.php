@@ -18,7 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('url');
-            $table->json('meta_data');
+            $table->json('meta_data')->nullable();
             $table->bigInteger('post_id');
             $table->timestamps();
         });
