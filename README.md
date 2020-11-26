@@ -13,3 +13,8 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 10. `php artisan serve`
 11. Visit `localhost:8000/login` in your browser
 12. Choose one `email` id from `users` table. Password is `password`.
+
+###### Code explanation
+
+**Create Migration, model, and Factory to start with the project**
+* [On Medium](https://madhavendra-dutt.medium.com/how-to-seed-test-data-into-a-database-in-laravel-ec1b7defe552)
