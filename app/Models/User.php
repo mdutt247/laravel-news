@@ -36,6 +36,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function comments(){
+        return $this->hasMany(Comment::class, 'author_id', 'id');
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'author_id', 'id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

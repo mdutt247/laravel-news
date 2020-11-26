@@ -14,4 +14,8 @@ class Category extends Model
         'color',
         'meta_data',
     ];
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }

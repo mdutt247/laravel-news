@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test', function () {
+    $category = App\Models\Category::find(3);
+    // return $category->posts;
+
+    $comment = App\Models\Comment::find(152);
+    // return $comment->author;
+    // return $comment->post;
+
+    $post = App\Models\Post::find(152);
+    // return $post->category;
+    // return $post->author;
+    // return $post->images;
+    // return $post->comments;
+    // return $post->tags;
+
+    $tag = App\Models\Tag::find(5);
+    // return $tag->posts;
+
+    $author = App\Models\User::find(88);
+    // return $author->posts;
+    return $author->comments;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
