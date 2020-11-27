@@ -21,7 +21,7 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 * [On MDITech](https://mditech.net/how-to-seed-test-data-into-a-database-in-laravel/)
 
 **Establish Relationships**
-* Coming soon...
+* [On Medium](https://madhavendra-dutt.medium.com/database-relationship-6780f4eab72a)
 
 
 Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
