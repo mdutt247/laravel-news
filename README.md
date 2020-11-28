@@ -23,6 +23,9 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 **Establish Relationships**
 * [On Medium](https://madhavendra-dutt.medium.com/database-relationship-6780f4eab72a)
 
+**API Resources, API Controllers, and API Routes**
+* [On Medium]
+
 Keep an eye. More tutorials are on the way...
 
 Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
