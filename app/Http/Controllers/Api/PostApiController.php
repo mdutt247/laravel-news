@@ -18,7 +18,11 @@ class PostApiController extends Controller
 
     public function show($id)
     {
-        $post = Post::with(['author', 'category', 'tags', 'images', 'videos', 'comments'])->find($id);
+        $post = Post::with([
+            'author', 'category', 'tags', 'images', 'videos', 'comments' => function ($query) {
+                $query->with(['author']);
+            }
+        ])->find($id);
         return new PostResource($post);
     }
 
