@@ -9,15 +9,15 @@ use Illuminate\Http\Request;
 
 class CommentApiController extends Controller
 {
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $request->validate([
             'comment'   => 'required',
-            'post_id'   => 'required'
+            'id'   => 'required'
         ]);
         $comment = new Comment();
-        $comment->content = $request->get('comment');
-        $comment->post_id = $id;
+        $comment->comment = $request->get('comment');
+        $comment->post_id =  $request->get('id');
         $comment->author_id = $request->user()->id;
         $comment->save();
         return new CommentResource($comment);
