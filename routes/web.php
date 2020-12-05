@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\Categories\Categories;
 use App\Http\Livewire\Categories\Categoryposts;
+use App\Http\Livewire\Posts\Posts;
+use App\Http\Livewire\Posts\Post as p;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +50,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('dashboard/categories', Categories::class)->name('categories');
 Route::get('dashboard/categories/{id}/posts', Categoryposts::class);
+
+Route::get('dashboard/posts', Posts::class)->name('posts');
+Route::get('dashboard/posts/{id}', p::class);
