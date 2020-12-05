@@ -21,16 +21,19 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 **All tutorial links**
 * [Visit mditech.net](https://mditech.net/laravel-tutorial/)
 
-**Create Migration, Model, and Factory to start with the project**
+*Part 1:* **Create Migration, Model, and Factory to start with the project**
 * [Read on medium.com](https://madhavendra-dutt.medium.com/how-to-seed-test-data-into-a-database-in-laravel-ec1b7defe552)
 
-**Establish Relationships**
+*Part 2:* **Establish Relationships**
 * [Read on medium.com](https://madhavendra-dutt.medium.com/database-relationship-6780f4eab72a)
 
-**API Resources, API Controllers, and API Routes**
+*Part 3:* **API Resources, API Controllers, and API Routes**
 * [Read on medium.com](https://madhavendra-dutt.medium.com/creating-and-consuming-restful-api-in-laravel-7dc116430b3)
 
-Keep an eye. More tutorials are on the way...
+*Part 4:* **Front End for Admin Dashboard on Web inteface**
+* [Read on medium.com]
+
+**Keep an eye. More tutorials are on the way...**
 
 Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
 
