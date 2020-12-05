@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Categories\Categories;
+use App\Http\Livewire\Categories\Categoryposts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +45,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('dashboard/categories', Categories::class)->name('categories');
+Route::get('dashboard/categories/{id}/posts', Categoryposts::class);
