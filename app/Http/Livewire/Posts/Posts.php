@@ -63,7 +63,7 @@ class Posts extends Component
                 }
                 Image::create([
                     'url' => url('storage'. Str::substr($storedImage, 6)),
-                    'description' => '',
+                    'title' => '-',
                     'post_id' => $post->id,
                     'featured' => $featured
                 ]);
