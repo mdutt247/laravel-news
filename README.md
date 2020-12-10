@@ -14,6 +14,14 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 11. Visit `localhost:8000/login` in your browser
 12. Choose one `email` id from `users` table. Password is `password`.
 
+### Screenshots
+
+Response from API to be consumed by mobile apps etc.
+![api response](https://miro.medium.com/max/3000/1*yttnGhlogAK_ZtY4sBUqMQ.png "API Response") 
+
+Admin Dashboard - Category Managment Page
+![category managment page](https://cdn-images-1.medium.com/max/1000/1*d2PBZixmiQ-oDRGnOSViow.png "Category Managment Page")
+
 ### Code explanation
 
 *Note:* Please run `git pull` before each topic until this tutorial is complete.
