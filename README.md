@@ -20,7 +20,22 @@ Response from API to be consumed by mobile apps etc.
 ![api response](https://miro.medium.com/max/3000/1*yttnGhlogAK_ZtY4sBUqMQ.png "API Response") 
 
 Admin Dashboard - Category Managment Page
-![category managment page](https://cdn-images-1.medium.com/max/1000/1*d2PBZixmiQ-oDRGnOSViow.png "Category Managment Page")
+![category managment page](https://miro.medium.com/max/875/1*stzLGcvrR15TmokZZIrsRQ.png "Category Managment Page")
+
+Admin Dashboard - Create Category
+![create category](https://miro.medium.com/max/875/1*dOZ1DSehN-5SYbv9_aSh_Q.png "Create Category")
+
+Admin Dashboard - Edit Category
+![edit category](https://miro.medium.com/max/875/1*iWv3ujBXhOpIJV-NiOA-gg.png "Edit Category")
+
+Admin Dashboard - Post Managment Page
+![post managment page](https://miro.medium.com/max/678/1*4pUX8N43eYjdmenGyFJ3nA.png "Post Management Page")
+
+Admin Dashboard - Create Post
+![create post](https://miro.medium.com/max/875/1*IDLWBhGNB3KHEiYi6N1czA.png "Create Post")
+
+Admin Dashboard - Edit Post
+![edit post](https://miro.medium.com/max/875/1*5SBQT9TRSL140saVh1Hl7Q.png "Edit Post")
 
 ### Code explanation
 
@@ -39,9 +54,7 @@ Admin Dashboard - Category Managment Page
 * [Read on medium.com](https://madhavendra-dutt.medium.com/creating-and-consuming-restful-api-in-laravel-7dc116430b3)
 
 *Part 4:* **Front End for Admin Dashboard on Web inteface**
-* [Read on medium.com]
-
-**Keep an eye. More tutorials are on the way...**
+* [Read on medium.com](https://madhavendra-dutt.medium.com/creating-the-front-end-in-laravel-using-jetstream-livewire-72d140c6c946)
 
 Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
 
