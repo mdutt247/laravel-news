@@ -39,7 +39,6 @@ Admin Dashboard - Edit Post
 
 ### Code explanation
 
-*Note:* Please run `git pull` before each topic until this tutorial is complete.
 
 **All tutorial links**
 * [Visit mditech.net](https://mditech.net/laravel-tutorial/)
