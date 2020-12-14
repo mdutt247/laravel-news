@@ -10,7 +10,7 @@
                 <div class="font-bold text-xl mb-2">{{ $post->title }}</div>
                 <div class="flex">
                     by&nbsp;<span class="italic">{{ $post->author->first_name . ' ' . $post->author->last_name }}</span>
-                    &nbsp;in&nbsp;<a href="{{ url('dashboard/category/' . $post->category->id . '/posts') }}"
+                    &nbsp;in&nbsp;<a href="{{ url('dashboard/categories/' . $post->category->id . '/posts') }}"
                         class="underline">{{ $post->category->title }}</a>
                     &nbsp;on&nbsp;{{ $post->updated_at->format('F, d Y') }}
                 </div>
@@ -38,7 +38,7 @@
                     @if (count($tags) > 0)
                         Tags:
                         @foreach ($tags as $key => $tag)
-                            <a href="{{ url('dashboard/tag/' . $tag . '/posts') }}"
+                            <a href="{{ url('dashboard/tags/' . $tag . '/posts') }}"
                                 class="underline px-1">{{ $key }}</a>
                         @endforeach
                     @endif
@@ -56,7 +56,7 @@
                                         {{ $comment->author->first_name . ' ' . $comment->author->last_name }}</p>
                                     <p class="text-gray-400 text-xs">{{ $comment->created_at->format('F, d Y g:i a') }}
                                     </p>
-                                    <p class="text-gray-500 pb-4">{{ $comment->content }}</p>
+                                    <p class="text-gray-500 pb-4">{{ $comment->comment }}</p>
                                 </div>
                             @endforeach
                         </div>

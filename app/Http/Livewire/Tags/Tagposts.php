@@ -1,32 +1,38 @@
 <?php
-namespace App\Http\Livewire\Posts;
+/**
+ * @author MDITech <mditech.net@gmail.com>
+ */
+
+namespace App\Http\Livewire\Tags;
 
 use App\Models\Category;
-use App\Models\Image;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-
-class Posts extends Component
+class Tagposts extends Component
 {
     use WithPagination;
-    use WithFileUploads;
 
     public $title, $content, $category, $post_id;
     public $tagids = array();
-    public $photos = [];
     public $isOpen = 0;
+
+    public $tid;
+
+    public function mount($id)
+    {
+        // $this->resetInputFields();
+        $this->tid = $id;
+    }
 
     public function render()
     {
         return view('livewire.posts.posts', [
-            'posts' => Post::orderBy('id', 'desc')->paginate(),
+            'posts' => Tag::findOrFail($this->tid)->posts()->paginate(),
             'categories' => Category::all(),
             'tags' => Tag::all(),
         ]);
@@ -38,10 +44,8 @@ class Posts extends Component
             'title' => 'required',
             'content' => 'required',
             'category' => 'required',
-            'photos.*' => 'image|max:1024',
         ]);
 
-        // Update or Insert Post
         $post = Post::updateOrCreate(['id' => $this->post_id], [
             'title' => $this->title,
             'content' => $this->content,
@@ -49,38 +53,14 @@ class Posts extends Component
             'author_id' => Auth::user()->id,
         ]);
 
-        // Image upload and store name in db
-        if (count($this->photos) > 0) {
-            Image::where('post_id', $post->id)->delete();
-            $counter = 0;
-            foreach ($this->photos as $photo) {
-
-                $storedImage = $photo->store('public/photos');
-
-                $featured = false;
-                if($counter == 0 ){
-                    $featured = true;
-                }
-                Image::create([
-                    'url' => url('storage'. Str::substr($storedImage, 6)),
-                    'title' => '-',
-                    'post_id' => $post->id,
-                    'featured' => $featured
-                ]);
-                $counter++;
-            }
-        }
-
-        // Post Tag mapping
         if (count($this->tagids) > 0) {
+
             DB::table('post_tag')->where('post_id', $post->id)->delete();
 
             foreach ($this->tagids as $tagid) {
                 DB::table('post_tag')->insert([
                     'post_id' => $post->id,
-                    'tag_id' => intVal($tagid),
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    'tag_id' => intVal($tagid)
                 ]);
             }
         }
@@ -97,8 +77,6 @@ class Posts extends Component
     public function delete($id)
     {
         Post::find($id)->delete();
-        DB::table('post_tag')->where('post_id', $id)->delete();
-
         session()->flash('message', 'Post Deleted Successfully.');
     }
 
@@ -133,11 +111,10 @@ class Posts extends Component
 
     private function resetInputFields()
     {
-        $this->title = null;
-        $this->content = null;
+        $this->title = '';
+        $this->content = '';
         $this->category = null;
         $this->tagids = null;
-        $this->photos = null;
-        $this->post_id = null;
+        $this->post_id = '';
     }
 }

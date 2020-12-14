@@ -56,7 +56,9 @@ class Categoryposts extends Component
             foreach ($this->tagids as $tagid) {
                 DB::table('post_tag')->insert([
                     'post_id' => $post->id,
-                    'tag_id' => intVal($tagid)
+                    'tag_id' => intVal($tagid),
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ]);
             }
         }
