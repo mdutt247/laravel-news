@@ -75,7 +75,6 @@ class UserApiController extends Controller
 
     public function logout(Request $request)
     {
-        dd($request->all());
         $request->user()->tokens()->delete();
         return response()->json('logout', 201);
     }
