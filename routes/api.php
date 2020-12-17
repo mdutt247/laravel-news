@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// https://documenter.getpostman.com/view/8942795/TVmJhJv2 1|WzMgc2f9bOPywWfPnw55oF3N8G3tniuiJaxk7HHm
+// https://documenter.getpostman.com/view/8942795/TVmJhJv2
+
+Route::post('registration', [UserApiController::class, 'store']);
+Route::post('login', [UserApiController::class, 'login']);
 
 Route::get('authors/{id}', [UserApiController::class, 'show']);
 Route::get('authors/{id}/posts', [UserApiController::class, 'posts']);
@@ -35,4 +38,5 @@ Route::get('tags/{id}/posts', [TagApiController::class, 'posts']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('comments/posts', [CommentApiController::class, 'store']);
+    Route::post('logout', [UserApiController::class, 'logout']);
 });

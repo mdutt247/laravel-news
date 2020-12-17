@@ -9,6 +9,8 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\CommentResource;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserApiController extends Controller
 {
@@ -19,19 +21,63 @@ class UserApiController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'first_name'  => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'password'  => 'required|min:6|confirmed'
-        ]);
+        $rules = [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'min:6', 'confirmed'],
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
         $user = new User();
         $user->first_name = $request->get('first_name');
         $user->last_name = $request->get('last_name');
         $user->email = $request->get('email');
         $user->password = Hash::make($request->get('password'));
         $user->save();
+
         return new UserResource($user);
+    }
+
+    public function login(Request $request)
+    {
+        $rules = [
+            'email' => 'required',
+            'password' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json(['email' => 'The provided credentials are incorrect.'], 404);
+        }
+
+        $token = $user->createToken('app-token')->plainTextToken;
+
+        $response = [
+            'data' => new UserResource($user),
+            'token' => $token
+        ];
+
+        return response()->json($response, 201);
+    }
+
+    public function logout(Request $request)
+    {
+        dd($request->all());
+        $request->user()->tokens()->delete();
+        return response()->json('logout', 201);
     }
 
     public function posts($id)
