@@ -79,7 +79,7 @@ class UserApiController extends Controller
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        $response = ['data' => new UserResource(Auth::user())];
+        $response = ['data' => 'Logout successful.'];
         return response()->json($response, 201);
     }
 
