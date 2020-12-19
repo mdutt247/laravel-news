@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registration', [UserApiController::class, 'store']);
 Route::post('login', [UserApiController::class, 'login']);
-Route::get('show/{id}', [UserApiController::class, 'show']);
+// Route::get('show/{id}', [UserApiController::class, 'show']);
 
 Route::get('authors/{id}', [UserApiController::class, 'show']);
 Route::get('authors/{id}/posts', [UserApiController::class, 'posts']);
