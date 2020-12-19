@@ -41,7 +41,12 @@ class UserApiController extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        return new UserResource($user);
+        $token = $user->createToken('app-token')->plainTextToken;
+
+        $user->token = $token;
+        $response = ['data' => new UserResource($user)];
+
+        return response($response, 201);
     }
 
     public function login(Request $request)
@@ -65,18 +70,17 @@ class UserApiController extends Controller
 
         $token = $user->createToken('app-token')->plainTextToken;
 
-        $response = [
-            'data' => new UserResource($user),
-            'token' => $token
-        ];
+        $user->token = $token;
+        $response = ['data' => new UserResource($user)];
 
-        return response()->json($response, 201);
+        return response($response, 201);
     }
 
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        return response()->json('logout', 201);
+        $response = ['data' => new UserResource(Auth::user())];
+        return response()->json($response, 201);
     }
 
     public function posts($id)
