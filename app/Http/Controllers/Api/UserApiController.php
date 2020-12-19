@@ -26,7 +26,7 @@ class UserApiController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'min:6', 'confirmed'],
+            'password' => ['required', 'min:6', 'confirmed'], //need to pass password_confirmation also in request
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -111,6 +111,30 @@ class UserApiController extends Controller
                 return response()->json(['data' => $ex->getMessage(), 500]);
             }
         }
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $rules = [
+            'current_password' => ['required', 'min:6'],
+            'password' => ['required', 'min:6', 'confirmed'], //need to pass password_confirmation also in request
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        if (!Hash::check($request->get('current_password'), $request->user()->password)) {
+            return response()->json(['data' => 'The provided password does not match your current password.'], 404);
+        }
+
+        $request->user()->forceFill([
+            'password' => Hash::make($request->get('password')),
+        ])->save();
+
+        return response(['data' => 'Password set successfully.'], 201);
     }
 
     public function posts($id)
