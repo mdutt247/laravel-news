@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\PostApiController;
 use App\Http\Controllers\Api\TagApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registration', [UserApiController::class, 'store']);
 Route::post('login', [UserApiController::class, 'login']);
+Route::post('forgot-password', [UserApiController::class, 'forgotPassword']);
 // Route::get('show/{id}', [UserApiController::class, 'show']);
 
 Route::get('authors/{id}', [UserApiController::class, 'show']);

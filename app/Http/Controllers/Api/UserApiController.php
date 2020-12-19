@@ -9,7 +9,8 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\CommentResource;
-use Illuminate\Support\Facades\Auth;
+use Exception;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 
 class UserApiController extends Controller
@@ -81,6 +82,35 @@ class UserApiController extends Controller
         $request->user()->tokens()->delete();
         $response = ['data' => 'Logout successful.'];
         return response()->json($response, 201);
+    }
+
+    /*
+    /* Consumer of this API will request for password reset link by providing email id registered.
+    /* This reset link will be sent to the provided email id, if it exists.
+    /* After clicking the password reset link in the email, user is redirected to web interface.
+    /* And there user is able to reset the password using Laravel's default auth views.
+    */
+    public function forgotPassword(Request $request)
+    {
+        $rules = ['email' => "required|email",];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        } else {
+            try {
+                $mail = Password::sendResetLink($request->only('email'));
+                switch ($mail) {
+                    case Password::RESET_LINK_SENT:
+                        return response()->json(['data' => 'Reset password link sent on your email id.', 201]);
+                    case Password::INVALID_USER:
+                        return response()->json(['data' => 'We can\'t find a user with that email address.'], 404);
+                }
+            } catch (\Swift_TransportException $ex) {
+                return response()->json(['data' => $ex->getMessage(), 500]);
+            } catch (Exception $ex) {
+                return response()->json(['data' => $ex->getMessage(), 500]);
+            }
+        }
     }
 
     public function posts($id)
