@@ -1,13 +1,11 @@
 <?php
 
-use App\Actions\Fortify\UpdateUserPassword;
 use App\Http\Controllers\Api\CategoryApiController;
 use App\Http\Controllers\Api\CommentApiController;
 use App\Http\Controllers\Api\PostApiController;
 use App\Http\Controllers\Api\TagApiController;
 use App\Http\Controllers\Api\UserApiController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Http\Controllers\PasswordResetLinkController;
 
 /*
 |--------------------------------------------------------------------------
