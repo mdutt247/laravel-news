@@ -101,7 +101,7 @@ class UserApiController extends Controller
                 $mail = Password::sendResetLink($request->only('email'));
                 switch ($mail) {
                     case Password::RESET_LINK_SENT:
-                        return response()->json(['data' => 'Reset password link sent on your email id.', 201]);
+                        return response()->json(['data' => 'Reset password link sent on your email id.'], 201);
                     case Password::INVALID_USER:
                         return response()->json(['data' => 'We can\'t find a user with that email address.'], 404);
                 }
