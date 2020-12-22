@@ -34,6 +34,7 @@ return [
     |
     */
 
+    //changes for Heroku
     'channels' => [
         'stack' => [
             'driver' => 'stack',
