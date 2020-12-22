@@ -66,7 +66,7 @@ class UserApiController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['email' => 'The provided credentials are incorrect.'], 404);
+            return response()->json(['errors' => 'The provided credentials are incorrect.'], 404);
         }
 
         $token = $user->createToken('app-token')->plainTextToken;
@@ -101,14 +101,14 @@ class UserApiController extends Controller
                 $mail = Password::sendResetLink($request->only('email'));
                 switch ($mail) {
                     case Password::RESET_LINK_SENT:
-                        return response()->json(['data' => 'Reset password link sent on your email id.'], 201);
+                        return response()->json(['errors' => 'Reset password link sent on your email id.'], 201);
                     case Password::INVALID_USER:
-                        return response()->json(['data' => 'We can\'t find a user with that email address.'], 404);
+                        return response()->json(['errors' => 'We can\'t find a user with that email address.'], 404);
                 }
             } catch (\Swift_TransportException $ex) {
-                return response()->json(['data' => $ex->getMessage(), 500]);
+                return response()->json(['errors' => $ex->getMessage(), 500]);
             } catch (Exception $ex) {
-                return response()->json(['data' => $ex->getMessage(), 500]);
+                return response()->json(['errors' => $ex->getMessage(), 500]);
             }
         }
     }
@@ -127,7 +127,7 @@ class UserApiController extends Controller
         }
 
         if (!Hash::check($request->get('current_password'), $request->user()->password)) {
-            return response()->json(['data' => 'The provided password does not match your current password.'], 404);
+            return response()->json(['errors' => 'The provided password does not match your current password.'], 404);
         }
 
         $request->user()->forceFill([
