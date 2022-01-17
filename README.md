@@ -60,6 +60,8 @@ Admin Dashboard - Create Post
 Admin Dashboard - Edit Post
 ![edit post](https://miro.medium.com/max/875/1*5SBQT9TRSL140saVh1Hl7Q.png "Edit Post")
 
+<a href="https://www.digitalocean.com/?refcode=cc1d5580891a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge" target="_blank"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
+
 ### How to host Laravel Project on DO
 
 Thanks to [Nathan Mwamba Musonda](https://www.facebook.com/nathan.mwamba.9638) for contributing steps to follw:
