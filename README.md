@@ -60,7 +60,7 @@ Admin Dashboard - Create Post
 Admin Dashboard - Edit Post
 ![edit post](https://miro.medium.com/max/875/1*5SBQT9TRSL140saVh1Hl7Q.png "Edit Post")
 
-<a href="https://www.digitalocean.com/?refcode=cc1d5580891a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge" target="_blank"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
+<a href="https://www.digitalocean.com/?refcode=cc1d5580891a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg" alt="DigitalOcean Referral Badge" /></a>
 
 ### How to host Laravel Project on DO
 
@@ -74,23 +74,28 @@ storage. you can do this by creating an APP, DATABASE and SPACE
 without using a droplet.
 
 // install laravel on you computer
+```
 $ composer create-project --prefer-dist laravel/laravel:^7.0 project
-
+```
 // create the migrations
+```
 php artisan make:model Image -m
-
+```
 //make tables
+```
 Schema::create('advances', function (Blueprint $table) {
        $table->id();
        $table->string('image')->nullable();
        $table->longText('image_name')->nullable();
        $table->timestamps();
 });
-
+```
 //migrate the tables
+```
 php artisan migrate
-
+```
 //Create a view (resources/views/image/upload.blade.php)
+```
 <div class="comment_form_container">
     <div class="section_title">Information</div>
       <form action="/image/upload" method="POST" enctype="multipart/form-data" class="comment_form">
@@ -105,12 +110,13 @@ php artisan migrate
          </form>
       </div>
 </div>
-
+```
 //create controller
+```
 php artisan make:controller ImageController
-
+```
 //setup the controller
-
+```
 <?php
 
 namespace App\Http\Controllers\admin;
@@ -151,14 +157,16 @@ class BeatsController extends Controller
     }
 
 }
-
+```
 //setup the route
+```
 Route::get('/', 'ImageController@index');
 Route::get('/upload', 'ImageController@create');
 Route::post('/image/upload', 'ImageController@store');
-
+```
 
 //setup the filesystem Driver for digital ocean spaces/ In Config/Filesystem Driver
+```
 'disks' => [
 
         'local' => [
@@ -193,8 +201,9 @@ Route::post('/image/upload', 'ImageController@store');
         ],
 
     ],
-
+```
 //Returning a view (resources/views/images.blade.php)
+```
 @foreach ($images as $image)
 <div class="blog_post d-flex flex-md-row flex-column align-items-start justify-content-start">
   <div class="blog_post_image">
@@ -203,12 +212,14 @@ Route::post('/image/upload', 'ImageController@store');
         </div>		
  </div>
 @endforeach
-
+```
 //In your env include these
+```
 DO_SPACES_KEY=your key
 DO_SPACES_SECRET=your secret
 DO_SPACES_ENDPOINT=endpoint
 DO_SPACES_REGION=ams3
 DO_SPACES_BUCKET=your bucket
 DO_URL=your url
+```
 // remember the variable will be provided by digital ocean when you create space
