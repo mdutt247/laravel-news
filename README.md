@@ -34,7 +34,6 @@ Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
 Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
 
 Twitter: [kotagin](https://twitter.com/kotagin)
-E-mail: [m.dutt@mditech.net](mailto:m.dutt@mditech.net)
 Website: [mditech.net](https://mditech.net)
 
 ### Screenshots
