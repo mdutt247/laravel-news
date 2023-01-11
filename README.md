@@ -36,6 +36,8 @@ Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any d
 Twitter: [kotagin](https://twitter.com/kotagin)
 Website: [mditech.net](https://mditech.net)
 
+**Disclosure: There are affiliate links in this article, which means that if you make a purchase after clicking on one, I may earn a commission.**
+
 ### Screenshots
 
 Response from API to be consumed by mobile apps etc.
