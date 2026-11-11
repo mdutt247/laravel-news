@@ -22,6 +22,6 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "is-svg": "^4.4.0"
+        "is-svg": "^6.1.0"
     }
 }
